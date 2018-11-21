@@ -1,0 +1,70 @@
+<html>
+    <head>
+    <title>WebSocket1</title>
+    <style>
+        html,body{font:normal 0.9em arial,helvetica;}
+        #log {width:440px; height:200px; border:1px solid #7F9DB9; overflow:auto;}
+        #msg {width:330px;}
+    </style>
+    <script>
+        var socket;
+        function init(){
+            var host = "ws://127.0.0.1:8765/";
+            socket = new WebSocket(host);
+            try{
+                socket.onopen    = function(msg){ ; };
+                socket.onmessage = function(msg){ log(msg.data); };
+            }
+            catch(ex){
+                socket.onclose   = function(msg){ log("Lose Connection!"); };
+                log(ex); 
+            }
+            $("msg").focus();
+        }
+        function send(){
+            var txt,msg;
+            txt = $("msg");
+            msg = txt.value;
+            if(!msg){ 
+                alert("Message can not be empty"); 
+                return; 
+            }
+            log(msg)
+            msg = '{"to_user_id": "WebSocket2", "msg":"' + msg + '"}'
+            txt.value="";
+            txt.focus();
+            try{ 
+                socket.send(msg); 
+            } 
+            catch(ex){ 
+                log(ex); 
+            }
+        }
+        function login(){
+            msg = '{"user_id": "WebSocket1", "login": "1"}'
+            socket.send(msg); 
+        }         
+
+        function $(id){ 
+            var id = document.getElementById(id);
+            return id;
+        }
+        function log(msg){ 
+            $("log").innerHTML+="<br>"+msg; 
+        }
+        function onkey(event){ 
+            if(event.keyCode==13){ 
+                send(); 
+            } 
+        }
+    </script>
+    </head>
+    <body onload="init()">
+        <h3>WebSocket1</h3>
+        <br><br>
+        <button onclick="login()">login</button>
+        <div id="log"></div>
+        <input id="msg" type="textbox" onkeypress="onkey(event)"/>
+        <button onclick="send()">发送</button>
+    </body>
+</html>
