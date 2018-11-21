@@ -18,7 +18,6 @@ def respond(msg):
     template='You just said:"{}"'
     return template.format(msg)
 
-
 async def handler(websocket, path):
     # print(path)
     while True:
