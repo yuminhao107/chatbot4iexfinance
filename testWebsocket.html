@@ -13,18 +13,21 @@
         var websocket = new WebSocket("ws://echo.websocket.org/");
         websocket.onopen = function(){
             console.log("websocket open");
-            document.getElementById("recv").innerHTML = "Connected";
+            document.getElementById("recv").innerHTML="Connected";
         }
         websocket.inclose = function(){
             console.log('websocket close');
         }
         websocket.onmessage = function(e){
             console.log(e.data);
-            document.getElementById("recv").innerHTML = e.data;
+            addToLog(e.data);
         }
         document.getElementById("sendBtn").onclick = function(){
             var txt = document.getElementById("sendTxt").value;
             websocket.send(txt);
+        }
+        function addToLog(msg){
+            document.getElementById("recv").innerHTML+="<br>received: "+msg;
         }
 
     </script>

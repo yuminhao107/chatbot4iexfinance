@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>
     <head>
+    <meta charset="UTF-8">
     <title>WebSocket1</title>
     <style>
         html,body{font:normal 0.9em arial,helvetica;}
@@ -9,7 +11,7 @@
     <script>
         var socket;
         function init(){
-            var host = "ws://cn2.yuminhao.com:8765/";
+            var host = "ws://127.0.0.1:8765/";
             socket = new WebSocket(host);
             try{
                 socket.onopen    = function(msg){ ; };
