@@ -14,7 +14,7 @@
             var host = "ws://127.0.0.1:8765/";
             socket = new WebSocket(host);
             try{
-                socket.onopen    = function(msg){ ; };
+                socket.onopen    = function(msg){ log("Connected to server."); };
                 socket.onmessage = function(msg){ log(msg.data); };
             }
             catch(ex){
@@ -22,7 +22,7 @@
                 log(ex); 
             }
             $("msg").focus();
-        }
+        } 
         function send(){
             var txt,msg;
             txt = $("msg");
@@ -32,11 +32,12 @@
                 return; 
             }
             log(msg)
-            msg = '{"to_user_id": "WebSocket2", "msg":"' + msg + '"}'
+            //msg = '{"to_user_id": "WebSocket2", "msg":"' + msg + '"}'
+            msg = {"to_user_id": "WebSocket2", "msg":msg}
             txt.value="";
             txt.focus();
             try{ 
-                socket.send(msg); 
+                socket.send(JSON.stringify(msg)); 
             } 
             catch(ex){ 
                 log(ex); 
@@ -62,11 +63,10 @@
     </script>
     </head>
     <body onload="init()">
-        <h3>WebSocket1</h3>
+        <h3>Chatbot</h3>
         <br><br>
-        <button onclick="login()">login</button>
         <div id="log"></div>
         <input id="msg" type="textbox" onkeypress="onkey(event)"/>
-        <button onclick="send()">发送</button>
+        <button onclick="send()">Send</button>
     </body>
 </html>
