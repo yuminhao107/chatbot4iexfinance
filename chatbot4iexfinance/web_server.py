@@ -3,8 +3,11 @@ import websockets
 import json
 import time
 from chatbot import Chatbot
+from rasa_nlu.model import Interpreter
+
 ALLSOKETS = {}
 SEVER_PORT=8765
+interpreter=None
 
 def add_connection(ws_id, ws):
     global ALLSOKETS
@@ -20,8 +23,7 @@ def filter_handle(ws_id):
 #     return template.format(msg)
 
 async def handler(websocket, path):
-    print('Server is running now.')
-    chatbot=Chatbot()
+    chatbot=Chatbot(interpreter)
     while True:
         message = await websocket.recv()
         message = json.loads(message)
@@ -31,6 +33,9 @@ async def handler(websocket, path):
         print(time.time())
 
 def main():
+    global interpreter
+    interpreter = Interpreter.load("./models/current/nlu")
+    print('Load model success.')
     start_server = websockets.serve(
         handler,
         'localhost',
