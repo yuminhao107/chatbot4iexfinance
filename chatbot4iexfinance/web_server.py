@@ -2,6 +2,7 @@ import asyncio
 import websockets
 import json
 import time
+from chatbot import Chatbot
 ALLSOKETS = {}
 SEVER_PORT=8765
 
@@ -14,16 +15,17 @@ def add_connection(ws_id, ws):
 def filter_handle(ws_id):
     return ALLSOKETS.get(ws_id)
 
-def respond(msg):
-    template='You just said:"{}"'
-    return template.format(msg)
+# def respond(msg):
+#     template='You just said:"{}"'
+#     return template.format(msg)
 
 async def handler(websocket, path):
-    # print(path)
+    print('Server is running now.')
+    chatbot=Chatbot()
     while True:
         message = await websocket.recv()
         message = json.loads(message)
-        new_message=respond(message['msg'])
+        new_message=chatbot.respond(message['msg'])
         await websocket.send(new_message)
         print('recv: ', message)
         print(time.time())

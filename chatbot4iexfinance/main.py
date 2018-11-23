@@ -1,0 +1,1 @@
+from data.stock_contract import StockEntry
