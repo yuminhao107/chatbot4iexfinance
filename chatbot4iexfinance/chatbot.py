@@ -12,4 +12,4 @@ class Chatbot:
         
     def simple_nlp(self,msg):
         result=self.interpreter.parse(msg)
-        return result['intent']['name']+'__'+result['intent']['confidence']
+        return result['intent']['name']+'__'+str(result['intent']['confidence'])
