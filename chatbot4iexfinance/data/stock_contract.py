@@ -7,3 +7,4 @@ class StockEntry:
     
     COLUMN_STOCK_NAME='name'
     
+    
