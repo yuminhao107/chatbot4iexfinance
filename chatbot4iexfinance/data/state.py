@@ -26,6 +26,7 @@ INTENT_AFFIRM='affirm'
 INTENT_DENY='deny'
 INTENT_CANCEL='cancel'
 INTENT_ADD_FAVORATE='add_favorate'
+INTENT_LOGIN='login'
 
 def handler_init():
     raise NotImplementedError
@@ -45,10 +46,10 @@ def handler_get_price():
 # precondition,handler
 PROPERTY_OF_STATE={
     STATE_INIT:([],handler_init),
-    STATE_USER:([USER],handler_init),
-    STATE_GET_INTRST:([STOCK_LIST,],handler_init),
-    STATE_GET_HISTORY:([STOCK_NAME,START_TIME,END_TIME],handler_init),
-    STATE_GET_PRICE:([STOCK_LIST,],handler_init)
+    STATE_USER:([USER],handler_user),
+    STATE_GET_INTRST:([STOCK_LIST,],handler_get_intrst),
+    STATE_GET_HISTORY:([STOCK_NAME,START_TIME,END_TIME],handler_get_history),
+    STATE_GET_PRICE:([STOCK_LIST,],handler_get_price)
 }
 
 ASK_FOR_INFORMATION={
@@ -60,5 +61,8 @@ ASK_FOR_INFORMATION={
 
 
 POLICY={
-    
+    (STATE_INIT,INTENT_GREET):STATE_INIT,
+    (STATE_INIT,INTENT_LOGIN):STATE_USER,
+    (STATE_INIT,INTENT_LOGIN):STATE_USER,
+
 }
