@@ -7,14 +7,6 @@
       },
       {
         "intent": "greet",
-        "text": "howdy"
-      },
-      {
-        "intent": "greet",
-        "text": "hey there"
-      },
-      {
-        "intent": "greet",
         "text": "hello"
       },
       {
@@ -22,36 +14,8 @@
         "text": "hi"
       },
       {
-        "intent": "greet",
-        "text": "good morning"
-      },
-      {
-        "intent": "greet",
-        "text": "good evening"
-      },
-      {
-        "intent": "greet",
-        "text": "dear sir"
-      },
-      {
         "intent": "affirm",
         "text": "yes"
-      },
-      {
-        "intent": "affirm",
-        "text": "yep"
-      },
-      {
-        "intent": "affirm",
-        "text": "yeah"
-      },
-      {
-        "intent": "affirm",
-        "text": "indeed"
-      },
-      {
-        "intent": "affirm",
-        "text": "that's right"
       },
       {
         "intent": "affirm",
@@ -62,335 +26,116 @@
         "text": "great"
       },
       {
-        "intent": "affirm",
-        "text": "right, thank you"
+        "intent": "deny",
+        "text": "no"
       },
       {
-        "intent": "affirm",
-        "text": "correct"
+        "intent": "deny",
+        "text": "that's not right"
       },
       {
-        "intent": "affirm",
-        "text": "great choice"
+        "intent": "logout",
+        "text": "logout"
       },
       {
-        "intent": "affirm",
-        "text": "sounds really good"
-      },
-      {
-        "intent": "restaurant_search",
-        "text": "i'm looking for a place to eat"
-      },
-      {
-        "intent": "restaurant_search",
-        "text": "I want to grab lunch"
-      },
-      {
-        "intent": "restaurant_search",
-        "text": "I am searching for a dinner spot"
-      },
-      {
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 31,
-            "end": 36,
-            "value": "north",
-            "entity": "location"
-          }
-        ],
-        "text": "i'm looking for a place in the north of town"
-      },
-      {
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 8,
-            "end": 15,
-            "value": "chinese",
-            "entity": "cuisine"
-          }
-        ],
-        "text": "show me chinese restaurants"
-      },
-      {
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 8,
-            "end": 14,
-            "value": "chinese",
-            "entity": "cuisine"
-          },
-          {
-            "start": 34,
-            "end": 39,
-            "value": "north",
-            "entity": "location"
-          }
-        ],
-        "text": "show me chines restaurants in the north"
-      },
-      {
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 31,
-            "end": 37,
-            "value": "centre",
-            "entity": "location"
-          },
-          {
-            "start": 10,
-            "end": 17,
-            "value": "mexican",
-            "entity": "cuisine"
-          }
-        ],
-        "text": "show me a mexican place in the centre"
-      },
-      {
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 20,
-            "end": 26,
-            "value": "indian",
-            "entity": "cuisine"
-          }
-        ],
-        "text": "i am looking for an indian spot called olaolaolaolaolaola"
-      },
-      {
-        "intent": "restaurant_search",
-        "text": "search for restaurants"
-      },
-      {
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 16,
-            "end": 20,
-            "value": "west",
-            "entity": "location"
-          }
-        ],
-        "text": "anywhere in the west"
-      },
-      {
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 14,
-            "end": 19,
-            "value": "18328",
-            "entity": "location"
-          }
-        ],
-        "text": "anywhere near 18328"
-      },
-      {
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 17,
-            "end": 29,
-            "value": "asian fusion",
-            "entity": "cuisine"
-          }
-        ],
-        "text": "I am looking for asian fusion food"
-      },
-      {
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 29,
-            "end": 34,
-            "value": "29432",
-            "entity": "location"
-          }
-        ],
-        "text": "I am looking a restaurant in 29432"
-      },
-      {
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 17,
-            "end": 38,
-            "value": "mexican indian fusion",
-            "entity": "cuisine"
-          }
-        ],
-        "text": "I am looking for mexican indian fusion"
-      },
-      {
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 0,
-            "end": 7,
-            "value": "central",
-            "entity": "location"
-          },
-          {
-            "start": 8,
-            "end": 14,
-            "value": "indian",
-            "entity": "cuisine"
-          }
-        ],
-        "text": "central indian restaurant"
-      },
-      {
-        "intent": "goodbye",
-        "text": "bye"
-      },
-      {
-        "intent": "goodbye",
-        "text": "goodbye"
-      },
-      {
-        "intent": "goodbye",
-        "text": "good bye"
-      },
-      {
-        "intent": "goodbye",
-        "text": "stop"
-      },
-      {
-        "intent": "goodbye",
+        "intent": "logout",
         "text": "end"
       },
       {
-        "intent": "goodbye",
-        "text": "farewell"
+        "intent": "logout",
+        "text": "byebye"
       },
       {
-        "intent": "goodbye",
-        "text": "Bye bye"
+        "intent": "logout",
+        "text": "bye"
       },
       {
-        "intent": "goodbye",
-        "text": "have a good one"
+        "intent": "search",
+        "text": "I want to know something about the market"
       },
       {
-        "intent": "hotel_search",
-        "entities": [
-          {
-            "start": 2,
-            "end": 7,
-            "value": "cheap",
-            "entity": "price"
-          },
-          {
-            "start": 21,
-            "end": 26,
-            "value": "north",
-            "entity": "area"
-          }
-        ],
-        "text": "a cheap hotel in the north"
+        "intent": "search",
+        "text": "How about AAPL today?"
       },
       {
-        "intent": "hotel_search",
-        "entities": [
-          {
-            "start": 3,
-            "end": 12,
-            "value": "expensive",
-            "entity": "price"
-          },
-          {
-            "start": 26,
-            "end": 31,
-            "value": "south",
-            "entity": "location"
-          }
-        ],
-        "text": "an expensive hotel in the south"
+        "intent": "search",
+        "text": "Anyting new about AAPL?"
       },
       {
-        "intent": "hotel_search",
-        "entities": [
-          {
-            "start": 15,
-            "end": 23,
-            "value": "downtown",
-            "entity": "location"
-          }
-        ],
-        "text": "a hotel in the downtown"
+        "intent": "search",
+        "text": "AAPL"
       },
       {
-        "intent": "location",
-        "entities": [
-          {
-            "start": 7,
-            "end": 12,
-            "value": "north",
-            "entity": "location"
-          }
-        ],
-        "text": "in the north of town"
+        "intent": "search",
+        "text": "the price of APPL and TSLA, please."
       },
       {
-        "intent": "location",
-        "entities": [
-          {
-            "start": 7,
-            "end": 12,
-            "value": "south",
-            "entity": "location"
-          }
-        ],
-        "text": "in the south of town"
+        "intent": "search_open",
+        "text": "open price"
       },
       {
-        "text": "I want a mid range hotel"
+        "intent": "search_open",
+        "text": "Open price"
+      },
+      {
+        "intent": "search_open",
+        "text": "open price of AAPL"
+      },
+      {
+        "intent": "search_open",
+        "text": "i want to know the open price of AAPL"
+      },
+      {
+        "intent": "search_open",
+        "text": "open price of AAPL please"
+      },
+      {
+        "intent": "search_open",
+        "text": "the open price of APPL and TSLA, please."
+      },
+      {
+        "intent": "search_interest",
+        "text": "interest"
+      },
+      {
+        "intent": "search_interest",
+        "text": "market interest"
+      },
+      {
+        "intent": "search_interest",
+        "text": "show me the interest of AAPL"
+      },
+      {
+        "intent": "search_interest",
+        "text": "interest of AAPL"
+      },
+      {
+        "intent": "search_interest",
+        "text": "i want to know the interest of AAPL"
+      },
+      {
+        "intent": "search_volume",
+        "text": "search volume of AAPL"
+      },
+      {
+        "intent": "search_volume",
+        "text": "volume of AAPL"
+      },
+      {
+        "intent": "search_volume",
+        "text": "volume"
+      },
+      {
+        "intent": "search_volume",
+        "text": "total volume"
+      },
+      {
+        "intent": "search_volume",
+        "text": "i want to know the volume of AAPL"
       }
     ],
-    "regex_features": [
-      {
-        "name": "greet",
-        "pattern": "hey[^\\s]*"
-      },
-      {
-        "name": "zipcode",
-        "pattern": "[0-9]{5}"
-      }
-    ],
+    "regex_features": [],
     "lookup_tables": [],
-    "entity_synonyms": [
-      {
-        "value": "chinese",
-        "synonyms": [
-          "Chinese",
-          "Chines",
-          "chines"
-        ]
-      },
-      {
-        "value": "vegetarian",
-        "synonyms": [
-          "veggie",
-          "vegg"
-        ]
-      },
-      {
-        "value": "hi",
-        "synonyms": [
-          "expensive",
-          "valued"
-        ]
-      },
-      {
-        "value": "lo",
-        "synonyms": [
-          "cheap"
-        ]
-      }
-    ]
+    "entity_synonyms": []
   }
 }

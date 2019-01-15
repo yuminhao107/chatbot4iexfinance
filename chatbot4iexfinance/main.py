@@ -23,13 +23,10 @@ def main():
         print('invalid args. You should use (python main.py [web|wechat]).')
         return
 
-    # interpreter = Interpreter.load("./models/current/nlu")
-    # Create a trainer that uses this config
-    trainer = Trainer(config.load("./models/config_spacy.yml"))
-    # Load the training data
-    training_data = load_data('./models/iexfinance.md')
-    # Create an interpreter by training the model
-    interpreter = trainer.train(training_data)
+    interpreter = Interpreter.load("./models/current/nlu")
+    # trainer = Trainer(config.load("./models/config_spacy.yml"))
+    # training_data = load_data('./models/iexfinance.md')
+    # interpreter = trainer.train(training_data)
     print('Load model success.')
     load_symbols()
    

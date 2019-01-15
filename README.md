@@ -34,7 +34,7 @@ Run the server in **web** mode:
 ```
 python chatbot4iexfinance/main.py web
 ```
-In order to visit the html page on your server, you should [configure your web server](#config-web-server) mannually.
+  (In order to visit the html page on your server, you should [configure your web server](#config-web-server) mannually.)
 
 Or run the the server in **wechat** mode:
 ```
