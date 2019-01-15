@@ -14,13 +14,8 @@ def add_connection(ws_id, ws):
     ALLSOKETS[ws_id] = ws
     print(ALLSOKETS)
 
-
 def filter_handle(ws_id):
     return ALLSOKETS.get(ws_id)
-
-# def respond(msg):
-#     template='You just said:"{}"'
-#     return template.format(msg)
 
 async def handler(websocket, path):
     chatbot=Chatbot(web_interpreter)
@@ -29,8 +24,8 @@ async def handler(websocket, path):
         message = json.loads(message)
         new_message=chatbot.respond(message['msg'])
         await websocket.send(new_message)
-        print('recv: ', message)
-        print(time.time())
+        # print('recv: ', message)
+        # print(time.time())
 
 def start_web_server(interpreter):
     global web_interpreter

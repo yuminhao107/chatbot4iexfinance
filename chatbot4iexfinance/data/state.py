@@ -1,7 +1,7 @@
 from iexfinance import Stock
 from random import choice
 
-# define parameter
+# define keys
 STOCK_LIST='stock_list'
 STOCK_NAME='stock_name'
 START_TIME='start_time'
@@ -25,7 +25,7 @@ INTENT_SEARCH_VOLUME='search_volume'
 INTENT_SEARCH_OPEN_PRICE='search_open'
 INTENT_SEARCH_CLOSE_PRICE='search_close'
 INTENT_SEARCH_INTEREST='search_interest'
-INTENT_SEARCH_HISTORY='search_capitalization'
+INTENT_SEARCH_HISTORY='search_history'
 INTENT_SPECIFY_TIME='specify_time'
 INTENT_AFFIRM='affirm'
 INTENT_DENY='deny'
@@ -39,22 +39,34 @@ INTENT_LOGOUT='logout'
 ENTITY_COMPANY='company'
 ENTITY_STOCK='stock'
 
-def handler_init():
+def handler_init(keys):
     templates=[]
 
-def handler_login():
+def hander_greet(keys):
+    template=[
+        'Hello!',
+        'Hi. I am R-O-B-O-T.',
+        'Yo. Bi-Bi-Bi'
+    ]
+    return choice(template)
+
+def handler_login(keys):
     raise NotImplementedError
 
-def handler_get_intrst():
-    raise NotImplementedError
+def handler_logout(keys):
+    template=[
+        'Log out. Bye.'
+    ]
+    return choice(template)
 
-def handler_get_history():
+
+def handler_get_history(keys):
     raise NotImplementedError
 
 def handler_get_price(keys):
-    template=['The price of {0} is {1}. ',
-    '{0} is {1}. ',
-    '{0}\'price is {1}. '
+    template=[
+        'The real-time price of {0} is {1}. ',
+        '{0}\'price is {1} now. '
     ]
     text=""
     if len(keys[STOCK_LIST])==1:
@@ -62,13 +74,15 @@ def handler_get_price(keys):
     for stock_name in keys[STOCK_LIST]:
         value=Stock(stock_name).get_open()
         text+=choice(template).format(stock_name,value)
-    text+='You can also ask me for other information. Such as volume, open price, capitalization.'
+    text+='You can also ask me for other information. Such as volume, open price, interest.'
     return text
 
 def handler_get_volume(keys):
-    template=['The volume of {0} is {1}. ',
-    '{0} is {1}. ',
-    '{0}\'volume is {1}. '
+    template=[
+        'The volume of {0} is {1}. ',
+        'Current volume of {0} is {1}. ',
+        '{0} is {1}. ',
+        '{0}\'volume is {1}. '
     ]
     text=""
     if len(keys[STOCK_LIST])==1:
@@ -79,10 +93,26 @@ def handler_get_volume(keys):
     return text
 
 def handler_get_open_price(keys):
-    template=['The open price of {0} is {1}. ',
-    'Today\'s open price of {0} is {1}. ',
-    '{0}\'open price is {1}. ',
-    'Today is {1}. '
+    template=[
+        'The open price of {0} is {1}. ',
+        'Today\'s open price of {0} is {1}. ',
+        '{0}\'open price is {1}. ',
+    ]
+    text=""
+    if len(keys[STOCK_LIST])==1:
+        template.append('{0}.')
+        template.append( 'Today is {1}. ')
+    for stock_name in keys[STOCK_LIST]:
+        value=Stock(stock_name).get_open()
+        text+=choice(template).format(stock_name,value)
+    return text
+    
+
+def handler_get_interest(keys):
+    template=[
+        'The short interest of {0} is {1}. ',
+        'Today\'s short interest of {0} is {1}. ',
+        '{0}\'short interest is {1}. ',
     ]
     text=""
     if len(keys[STOCK_LIST])==1:
@@ -91,33 +121,37 @@ def handler_get_open_price(keys):
         value=Stock(stock_name).get_open()
         text+=choice(template).format(stock_name,value)
     return text
-    
 
-def handler_get_interest():
+def handler_get_close_price(keys):
     raise NotImplementedError
 
-def handler_get_close_price():
-    raise NotImplementedError
+def handler_deny(keys):
+    return "OK."
 
+def handler_affirm(keys):
+    return "OK."
 
 
 # precondition,handler
-PROPERTY_OF_INTENT={
+PROPERTY_OF_ACTION={
     INTENT_LOGIN:([USER],handler_login),
-    INTENT_GET_FAVORATE:([STOCK_LIST,],handler_get_intrst),
     INTENT_SEARCH_HISTORY:([STOCK_LIST,START_TIME,END_TIME],handler_get_history),
     INTENT_SEARCH:([STOCK_LIST,],handler_get_price),
     INTENT_SEARCH_VOLUME:([STOCK_LIST,],handler_get_volume),
     INTENT_SEARCH_OPEN_PRICE:([STOCK_LIST,],handler_get_open_price),
     INTENT_SEARCH_CLOSE_PRICE:([STOCK_LIST,],handler_get_close_price),
-    INTENT_SEARCH_INTEREST:([STOCK_LIST,],handler_get_interest)
+    INTENT_SEARCH_INTEREST:([STOCK_LIST,],handler_get_interest),
+    INTENT_GREET:([],hander_greet),
+    INTENT_LOGOUT:([],handler_logout),
+    INTENT_DENY:([],handler_deny),
+    INTENT_AFFIRM:([],handler_affirm)
 }
 
 ASK_FOR_INFORMATION={
-    STOCK_LIST:['Which stock do you want to know?'],
-    START_TIME:['Start from when?'],
-    END_TIME:['End to when?'],
-    USER:['You need to input your USERNAME for further operation.']
+    STOCK_LIST:['Which stock do you want to know?',],
+    START_TIME:['Start from when?',],
+    END_TIME:['End to when?',],
+    USER:['You need to input your USERNAME for further operation.',]
 }
 
 
