@@ -93,7 +93,7 @@ class Chatbot:
                     self.keys[PENDING]=True
                     self.keys[HANDLER]=handler
                     self.keys[PRECONDITION]=precondition
-            return "Invalid Stock symbol(s). Please give me the right symbol."
+            return "The {} seems invalid. Please give me the right symbol.".format(" ".join(invalid))
         # check and merge
         if len(valid)>0:
             self.keys[STOCK_LIST]=user_stocks

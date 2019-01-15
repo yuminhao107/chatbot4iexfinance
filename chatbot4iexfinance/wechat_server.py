@@ -9,6 +9,7 @@ def start_wechat_server(interpreter):
     def reply_messages(msg):
         print(msg)
         sender=msg.sender
+        global chatbots
         if sender in chatbots:
             sender.send(chatbots[sender].respond(msg.text))
         else:
@@ -23,7 +24,7 @@ def start_wechat_server(interpreter):
         # send new message
         new_friend.send('This is a chatbot. You can ask me questions about stock.')
 
-    embed()
+    bot.join()
 
 
 if __name__ == '__main__':

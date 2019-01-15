@@ -73,12 +73,12 @@ def handler_get_price(keys):
         '{0}\' price is {1} now. '
     ]
     text=""
-    if len(keys[STOCK_LIST])==1:
-        template.append('{1}.')
+    # if len(keys[STOCK_LIST])==1:
+        # template.append('{1}.')
     for stock_name in keys[STOCK_LIST]:
         value=Stock(stock_name).get_price()
         text+=choice(template).format(stock_name,value)
-    # text+='You can also ask me for other information. Such as volume, open price, interest.'
+    text+='I also know volume, open price or interest. :)'
     return text
 
 def handler_get_volume(keys):

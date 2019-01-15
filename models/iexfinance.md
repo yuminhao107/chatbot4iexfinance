@@ -31,6 +31,7 @@
 - open price of AAPL
 - i want to know the open price of AAPL
 - open price of AAPL please
+- the open price of APPL and TSLA, please.
 
 ## intent:search_interest
 - interest
