@@ -34,6 +34,7 @@ INTENT_ADD_FAVORATE='add_favorate'
 INTENT_GET_FAVORATE='get_favorate'
 INTENT_LOGIN='login'
 INTENT_LOGOUT='logout'
+INTENT_ADD_STOCK='add_stock'
 
 # define entity name
 ENTITY_COMPANY='company'
@@ -44,11 +45,14 @@ def handler_init(keys):
 
 def hander_greet(keys):
     template=[
-        'Hello!',
-        'Hi. I am R-O-B-O-T.',
-        'Yo. Bi-Bi-Bi'
+        'Hello! ',
+        'Hi. I am R-O-B-O-T. ',
+        'Yo. Bi-Bi-Bi. '
+        'How are you. '
     ]
-    return choice(template)
+    text=choice(template)
+    text+='You can ask me for stock information, such as price, volume, interest. '
+    return text
 
 def handler_login(keys):
     raise NotImplementedError
@@ -66,15 +70,15 @@ def handler_get_history(keys):
 def handler_get_price(keys):
     template=[
         'The real-time price of {0} is {1}. ',
-        '{0}\'price is {1} now. '
+        '{0}\' price is {1} now. '
     ]
     text=""
     if len(keys[STOCK_LIST])==1:
-        template.append('{0}.')
+        template.append('{1}.')
     for stock_name in keys[STOCK_LIST]:
-        value=Stock(stock_name).get_open()
+        value=Stock(stock_name).get_price()
         text+=choice(template).format(stock_name,value)
-    text+='You can also ask me for other information. Such as volume, open price, interest.'
+    # text+='You can also ask me for other information. Such as volume, open price, interest.'
     return text
 
 def handler_get_volume(keys):
@@ -82,13 +86,13 @@ def handler_get_volume(keys):
         'The volume of {0} is {1}. ',
         'Current volume of {0} is {1}. ',
         '{0} is {1}. ',
-        '{0}\'volume is {1}. '
+        '{0}\' volume is {1}. '
     ]
     text=""
     if len(keys[STOCK_LIST])==1:
-        template.append('{0}.')
+        template.append('{1}.')
     for stock_name in keys[STOCK_LIST]:
-        value=Stock(stock_name).get_open()
+        value=Stock(stock_name).get_volume()
         text+=choice(template).format(stock_name,value)
     return text
 
@@ -96,11 +100,11 @@ def handler_get_open_price(keys):
     template=[
         'The open price of {0} is {1}. ',
         'Today\'s open price of {0} is {1}. ',
-        '{0}\'open price is {1}. ',
+        '{0}\' open price is {1}. ',
     ]
     text=""
     if len(keys[STOCK_LIST])==1:
-        template.append('{0}.')
+        template.append('{1}.')
         template.append( 'Today is {1}. ')
     for stock_name in keys[STOCK_LIST]:
         value=Stock(stock_name).get_open()
@@ -112,13 +116,13 @@ def handler_get_interest(keys):
     template=[
         'The short interest of {0} is {1}. ',
         'Today\'s short interest of {0} is {1}. ',
-        '{0}\'short interest is {1}. ',
+        '{0}\' short interest is {1}. ',
     ]
     text=""
     if len(keys[STOCK_LIST])==1:
-        template.append('{0}.')
+        template.append('{1}.')
     for stock_name in keys[STOCK_LIST]:
-        value=Stock(stock_name).get_open()
+        value=Stock(stock_name).get_short_interest()
         text+=choice(template).format(stock_name,value)
     return text
 

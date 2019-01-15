@@ -1,3 +1,4 @@
+from iexfinance import get_available_symbols
 from data.state import *
 import re
 
@@ -11,6 +12,26 @@ VALUE='value'
 PENDING='pending'
 HANDLER='handler'
 PRECONDITION='precondition'
+available_symbols=[]
+
+def load_symbols():
+     # load symbos
+    global available_symbols
+    stocks=get_available_symbols()
+    for stock in stocks:
+        available_symbols.append(stock['symbol'])
+    print('Load symbols success.')
+
+
+def varify_symbols(symbols):
+    valid=[]
+    invalid=[]
+    for symbol in symbols:
+        if symbol in available_symbols:
+            valid.append(symbol)
+        else:
+            invalid.append(symbol)
+    return valid, invalid
 
 class Chatbot:
     
@@ -63,20 +84,33 @@ class Chatbot:
         
         re_stock=re.findall("[-|A-Z]{2,8}",msg)
         user_stocks.extend(re_stock)
-        if len(user_stocks)>0:
-            self.keys[STOCK_LIST]=user_stocks
-
+        
         precondition,handler=PROPERTY_OF_ACTION[user_intent]
+        #  check invalid symbols
+        valid,invalid=varify_symbols(user_stocks)
+        if len(invalid)>0:
+            if (not self.keys[PENDING]):
+                    self.keys[PENDING]=True
+                    self.keys[HANDLER]=handler
+                    self.keys[PRECONDITION]=precondition
+            return "Invalid Stock symbol(s). Please give me the right symbol."
+        # check and merge
+        if len(valid)>0:
+            self.keys[STOCK_LIST]=user_stocks
+        # reload the pending handler
         if self.keys[PENDING]:
             precondition=self.keys[PRECONDITION]
             handler=self.keys[HANDLER]
+        # check if all slots if filled for the handler 
         for key in precondition:
             if not key in self.keys:
                 if (not self.keys[PENDING]):
                     self.keys[PENDING]=True
                     self.keys[HANDLER]=handler
                     self.keys[PRECONDITION]=precondition
-                    return choice(ASK_FOR_INFORMATION[key])
+                return choice(ASK_FOR_INFORMATION[key])
+        
+        self.keys[PENDING]=False
 
         return handler(self.keys)
 

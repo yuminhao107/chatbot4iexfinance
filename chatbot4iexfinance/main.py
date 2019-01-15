@@ -6,6 +6,7 @@ from rasa_nlu import config
 from web_server import start_web_server
 from wechat_server import start_wechat_server
 from static_test import static_test
+from chatbot import load_symbols
 import sys
 
 WECHAT='wechat'
@@ -26,10 +27,12 @@ def main():
     # Create a trainer that uses this config
     trainer = Trainer(config.load("./models/config_spacy.yml"))
     # Load the training data
-    training_data = load_data('./models/iexfinance.json')
+    training_data = load_data('./models/iexfinance.md')
     # Create an interpreter by training the model
     interpreter = trainer.train(training_data)
     print('Load model success.')
+    load_symbols()
+   
 
     if mode==WEB:
         start_web_server(interpreter)

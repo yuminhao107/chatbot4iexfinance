@@ -1,6 +1,7 @@
 ## intent:greet
 - hey
 - hello
+- hi
 
 ## intent:affirm
 - yes
@@ -11,16 +12,25 @@
 - no
 - that's not right
 
+## intent:logout
+- logout
+- end
+- byebye
+- bye
+
 ## intent:search
-- i want to know something about the market
+- I want to know something about the market
 - How about AAPL today?
-- anyting new about AAPL
+- Anyting new about AAPL?
 - AAPL
+- the price of APPL and TSLA, please.
 
 ## intent:search_open
 - open price
+- Open price
 - open price of AAPL
 - i want to know the open price of AAPL
+- open price of AAPL please
 
 ## intent:search_interest
 - interest
@@ -35,6 +45,3 @@
 - volume
 - total volume
 - i want to know the volume of AAPL
-
-## lookup:stock
-   symbols.txt

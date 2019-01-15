@@ -11,7 +11,7 @@
     <script>
         var socket;
         function init(){
-            var host = "ws://home.yuminhao.com:8765/";
+            var host = "ws://127.0.0.1:8765/";
             socket = new WebSocket(host);
             try{
                 socket.onopen    = function(msg){ log("Connected to server."); };

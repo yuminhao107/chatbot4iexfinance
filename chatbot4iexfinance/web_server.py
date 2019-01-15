@@ -29,8 +29,9 @@ async def handler(websocket, path):
 
 def start_web_server(interpreter):
     global web_interpreter
-    web_interpreter = Interpreter.load("./models/current/nlu")
-    print('Load model success.')
+    web_interpreter=interpreter
+    # web_interpreter = Interpreter.load("./models/current/nlu")
+    # print('Load model success.')
     start_server = websockets.serve(
         handler,
         'localhost',
