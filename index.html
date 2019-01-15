@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    <meta charset="UTF-8">
-    <title>WebSocket1</title>
-    <style>
-        html,body{font:normal 0.9em arial,helvetica;}
-        #log {width:440px; height:200px; border:1px solid #7F9DB9; overflow:auto;}
-        #msg {width:330px;}
-    </style>
+<head>
+    <meta charset="utf-8" />
+    <title>聊天对话框</title>
+    <link rel="stylesheet" href="style.css">
     <script>
         var socket;
         function init(){
             var host = "ws://127.0.0.1:8765/";
             socket = new WebSocket(host);
             try{
-                socket.onopen    = function(msg){ log("Connected to server."); };
-                socket.onmessage = function(msg){ log(msg.data); };
+                socket.onopen    = function(msg){ log2("Connected to server."); };
+                socket.onmessage = function(msg){ log2(msg.data); };
             }
             catch(ex){
-                socket.onclose   = function(msg){ log("Lose Connection!"); };
-                log(ex); 
+                socket.onclose   = function(msg){ log2("Lose Connection!"); };
+                log2(ex); 
             }
             $("msg").focus();
         } 
@@ -40,7 +36,7 @@
                 socket.send(JSON.stringify(msg)); 
             } 
             catch(ex){ 
-                log(ex); 
+                log2(ex); 
             }
         }
         function login(){
@@ -52,8 +48,23 @@
             var id = document.getElementById(id);
             return id;
         }
+        function log2(msg){ 
+            var node=document.createElement("div");
+            node.innerHTML+=msg;
+            node.classList.add("chat-bubble");
+            node.classList.add("chat-bubble-left");
+            var log=$("log");
+            log.appendChild(node);
+            log.scrollTop = log.scrollHeight; 
+        }
         function log(msg){ 
-            $("log").innerHTML+="<br>"+msg; 
+            var node=document.createElement("div");
+            node.innerHTML+=msg;
+            node.classList.add("chat-bubble");
+            node.classList.add("chat-bubble-right");
+            var log=$("log");
+            log.appendChild(node);
+            log.scrollTop = log.scrollHeight; 
         }
         function onkey(event){ 
             if(event.keyCode==13){ 
@@ -61,12 +72,14 @@
             } 
         }
     </script>
-    </head>
-    <body onload="init()">
+</head>
+<body onload="init()">
         <h3>Chatbot</h3>
         <br><br>
-        <div id="log"></div>
+        <div id="log">
+            
+        </div>
         <input id="msg" type="textbox" onkeypress="onkey(event)"/>
-        <button onclick="send()">Send</button>
-    </body>
+        <button onclick="send()">send</button>
+  </body>
 </html>
