@@ -3,7 +3,6 @@ This is a project of AI12 program.
 The chatbot can answer questions such as the price , volume and interest of stocks, by using natrue language. Something like:
 
 ![image](docs/demo.gif)
-
 ```
 User: hi
 Bot : Yo. Bi-Bi-Bi. How are you. You can ask me for stock information, such as price, volume, interest.
