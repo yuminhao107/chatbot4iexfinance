@@ -1,7 +1,8 @@
 # chatbot4iexfinance
 This is a project of AI12 program.
 The chatbot can answer questions such as the price , volume and interest of stocks, by using natrue language. Something like:
-![image](http://github.com/yuminhao107/chatbot4iexfinance/raw/master/docs/demo.gif)
+
+![image](docs/demo.gif)
 
 ```
 User: hi
